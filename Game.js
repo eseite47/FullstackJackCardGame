@@ -1,12 +1,3 @@
-// FullstackJack Rules:
-
-// - Each player is dealt the same number of cards
-// - They flip the card at the top of the deck
-// - The card with the highest value wins the round and the winning player 
-// receives a point. The two cards used are discarded.
-// - The players continue playing until there are no remaining cards
-// - The player with the most points at the end wins
-
 // #### Example
 
 // // player1Hand = ['A', '7', '8'];
@@ -18,6 +9,8 @@
 // fullstackJack(['K', 'Q', 'J'], ['Q', 'K', 'J'])
 // // --> returns  "Tie!"
 
+
+// function comparing two cards and returning the winner
 function isHigher(string1, string2)
 {
   var key = ['2','3','4','5','6','7','8','9','T','J','Q','K','A'];
@@ -34,7 +27,7 @@ function isHigher(string1, string2)
   }
 }
 
- 
+//function looking at the whole array of cards, and keeping scores
 function fullstackJack(array1, array2)
 {
   var player1 = 0;
@@ -42,6 +35,8 @@ function fullstackJack(array1, array2)
   
   for (var i = 0; i < array1.length; i++)
   {
+    
+    // if the two players draw different cards, compare them using the isHigher function
     if (array1[i] !== array2[i])
     {
       var results = isHigher(array1[i], array2[i]);
@@ -54,6 +49,8 @@ function fullstackJack(array1, array2)
        player2++;
       }
     }
+    
+    // else, this round is a tie, each get a point
     else 
     {
       player1++;
@@ -61,8 +58,8 @@ function fullstackJack(array1, array2)
     }
 
   }
-
   
+  //once all cards have been evaluate, return the winner
   if (player1 > player2)
   {
     return "Player 1 wins " + player1 + " to " + player2 +".";
